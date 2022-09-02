@@ -13,7 +13,6 @@ public class SymptomOperations implements ISymptomsOperations {
     public Map<String, Long> symptomsAndCount(List<String> symptoms){
         return symptoms.stream()
                 .collect(Collectors.groupingByConcurrent(s -> s, Collectors.counting()))
-                // sort map by key
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByKey())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,

@@ -12,21 +12,27 @@ import static com.hemebiotech.analytics.constant.Constant.*;
 
 public class AnalyticsCounterApplication {
 
-	// Mmain class : use to launch the program
+	/**
+	 *
+	 * Main class : use to launch the program
+	 */
 	public static void main(String[] args){
 		countAndSortSymptoms();
 	}
 
+	/**
+	 *
+	 * fetch all symptoms by reading in file
+	 * count symptoms and create map
+	 * write in out file
+	 */
 	private static void countAndSortSymptoms() {
-		// fetch all symptoms by reading in file
 		ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile(PATH+FILENAME_IN);
 		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
 
-		// count symptoms and create map
 		ISymptomsOperations symptomsOperations = new SymptomOperations();
 		Map<String, Long> symptomsAndCount = symptomsOperations.symptomsAndCount(symptoms);
 
-		// write in out file
 		ISymptomsCountWriter writer = new Writer(PATH+FILENAME_OUT);
 		writer.writeSymptoms(symptomsAndCount);
 	}
