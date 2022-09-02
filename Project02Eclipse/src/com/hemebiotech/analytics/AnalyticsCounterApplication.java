@@ -12,8 +12,12 @@ import static com.hemebiotech.analytics.constant.Constant.*;
 
 public class AnalyticsCounterApplication {
 
+	// Mmain class : use to launch the program
 	public static void main(String[] args){
+		countAndSortSymptoms();
+	}
 
+	private static void countAndSortSymptoms() {
 		// fetch all symptoms by reading in file
 		ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile(PATH+FILENAME_IN);
 		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
