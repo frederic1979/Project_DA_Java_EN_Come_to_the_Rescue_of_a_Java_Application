@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics.service.impl;
 
-import com.hemebiotech.analytics.constant.Constant;
-import com.hemebiotech.analytics.service.ISymptomReader;
+import com.hemebiotech.analytics.service.ISymptomsReader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,13 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.hemebiotech.analytics.constant.Constant.*;
-
 /**
  * Simple brute force implementation
  *
  */
-public class ReadSymptomDataFromFile implements ISymptomReader {
+public class ReaderImpl implements ISymptomsReader {
 
 	private String filepath;
 
@@ -23,30 +20,31 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * 
 	 * @param filepath a full or partial path to file with symptom strings in it, one per line
 	 */
-	public ReadSymptomDataFromFile (String filepath) {
+	public ReaderImpl(String filepath) {
 		this.filepath = filepath;
 	}
-	
+
 	@Override
 	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<>();
-		
+
 		if (filepath != null) {
 			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
+				// fileReader creation in order to read file
+				FileReader fileReader = new FileReader(filepath);
+				// bufferedReader creation using fileReader
+				BufferedReader reader = new BufferedReader(fileReader);
+
 				String line = reader.readLine();
 
 				while (line != null) {
 					result.add(line);
+					// read next line
 					line = reader.readLine();
 				}
 				reader.close();
-				throw new ArithmeticException("this");
 			} catch (IOException e) {
-				System.out.println("c'est IOExcept");
-			}
-			catch (ArithmeticException e) {
-				System.out.println("c'est Arith");
+				e.printStackTrace();
 			}
 		}
 		return result;

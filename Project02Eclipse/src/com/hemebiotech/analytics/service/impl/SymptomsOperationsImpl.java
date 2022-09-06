@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class SymptomOperations implements ISymptomsOperations {
+public class SymptomsOperationsImpl implements ISymptomsOperations {
 
     @Override
     public Map<String, Long> symptomsAndCount(List<String> symptoms){

@@ -6,17 +6,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-public class Writer implements ISymptomsCountWriter {
+public class WriterImpl implements ISymptomsCountWriter {
 
     private final String filepath;
 
-    public Writer(String filepath) {
+    public WriterImpl(String filepath) {
         this.filepath = filepath;
     }
 
     @Override
     public void writeSymptoms(Map<String, Long> symptomsAndCount) {
-        if (filepath != null) {
+        if (filepath != null && !symptomsAndCount.isEmpty()) {
             try {
                 // create output file
                 FileWriter writer = new FileWriter(filepath);

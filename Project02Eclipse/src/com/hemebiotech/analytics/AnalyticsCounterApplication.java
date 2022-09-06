@@ -1,10 +1,10 @@
 package com.hemebiotech.analytics;
-import com.hemebiotech.analytics.service.ISymptomReader;
+import com.hemebiotech.analytics.service.ISymptomsReader;
 import com.hemebiotech.analytics.service.ISymptomsCountWriter;
-import com.hemebiotech.analytics.service.impl.ReadSymptomDataFromFile;
-import com.hemebiotech.analytics.service.impl.Writer;
+import com.hemebiotech.analytics.service.impl.ReaderImpl;
+import com.hemebiotech.analytics.service.impl.WriterImpl;
 import com.hemebiotech.analytics.service.ISymptomsOperations;
-import com.hemebiotech.analytics.service.impl.SymptomOperations;
+import com.hemebiotech.analytics.service.impl.SymptomsOperationsImpl;
 
 import java.util.*;
 
@@ -29,13 +29,13 @@ public class AnalyticsCounterApplication {
 	 * write in out file
 	 */
 	public static void countAndSortSymptoms() {
-		ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile(PATH+FILENAME_IN);
+		ISymptomsReader readSymptomDataFromFile = new ReaderImpl(PATH+FILENAME_IN);
 		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
 
-		ISymptomsOperations symptomsOperations = new SymptomOperations();
+		ISymptomsOperations symptomsOperations = new SymptomsOperationsImpl();
 		Map<String, Long> symptomsAndCount = symptomsOperations.symptomsAndCount(symptoms);
 
-		ISymptomsCountWriter writer = new Writer(PATH+FILENAME_OUT);
+		ISymptomsCountWriter writer = new WriterImpl(PATH+FILENAME_OUT);
 		writer.writeSymptoms(symptomsAndCount);
 	}
 
