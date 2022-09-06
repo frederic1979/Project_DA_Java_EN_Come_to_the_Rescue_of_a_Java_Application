@@ -24,9 +24,9 @@ public class AnalyticsCounterApplication {
 
 	/**
 	 *
-	 * fetch all symptoms by reading in file
+	 * fetch all symptoms by reading in FILENAME_IN
 	 * count symptoms and create map
-	 * write in out file
+	 * write in FILENAME_OUT
 	 */
 	public static void countAndSortSymptoms() {
 		ISymptomsReader readSymptomDataFromFile = new ReaderImpl(PATH+FILENAME_IN);
