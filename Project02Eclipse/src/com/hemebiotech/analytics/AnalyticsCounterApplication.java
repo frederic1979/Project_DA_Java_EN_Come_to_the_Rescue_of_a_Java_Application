@@ -20,13 +20,15 @@ public class AnalyticsCounterApplication {
 		countAndSortSymptoms();
 	}
 
+
+
 	/**
 	 *
 	 * fetch all symptoms by reading in file
 	 * count symptoms and create map
 	 * write in out file
 	 */
-	private static void countAndSortSymptoms() {
+	public static void countAndSortSymptoms() {
 		ISymptomReader readSymptomDataFromFile = new ReadSymptomDataFromFile(PATH+FILENAME_IN);
 		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
 
