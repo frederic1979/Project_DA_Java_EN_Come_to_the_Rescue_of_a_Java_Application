@@ -10,7 +10,7 @@ import java.util.*;
 
 import static com.hemebiotech.analytics.constant.Constant.*;
 
-public class AnalyticsCounterApplication {
+public class AnalyticsCounter {
 
 	/**
 	 *
