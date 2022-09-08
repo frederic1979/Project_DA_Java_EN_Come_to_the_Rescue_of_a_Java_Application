@@ -21,7 +21,6 @@ public class AnalyticsCounter {
 	}
 
 
-
 	/**
 	 *
 	 * fetch all symptoms by reading in FILENAME_IN
